@@ -172,7 +172,7 @@ LIBRARY_SYMLINK = lib$(LIBNAME).$(EXT)
 endif
 endif
 
-UNICORN_QEMU_FLAGS += --python=$(shell which python2 || which /usr/bin/python || which python)
+UNICORN_QEMU_FLAGS += --python=$(shell which /usr/bin/python || which python || which python2)
 
 ifeq ($(UNICORN_STATIC),yes)
 ifneq ($(filter MINGW%,$(UNAME_S)),)
@@ -245,9 +245,9 @@ else
 endif
 ifeq ($(DO_WINDOWS_EXPORT),1)
 ifneq ($(filter MINGW32%,$(UNAME_S)),)
-	cmd /c "windows_export.bat x86"
+	cmd //C "windows_export.bat x86"
 else
-	cmd /c "windows_export.bat x64"
+	cmd //C "windows_export.bat x64"
 endif
 endif
 endif
